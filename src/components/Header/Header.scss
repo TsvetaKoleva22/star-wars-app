@@ -1,0 +1,35 @@
+@import '../../style-constants.scss';
+@import '../../mixins/breakpoint-mixin.scss';
+
+.header {
+    background-color: $background-color-dark;
+
+    &__container {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        padding-top: 28px;
+        padding-bottom: 28px;
+
+        @include small-mobile {
+            align-items: flex-start;
+            justify-content: space-between;
+            padding-top: 16px;
+            padding-bottom: 16px;
+        }
+    }
+
+    &__logo-area {
+        width: 70px;
+        height: 19px;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        @include small-mobile {
+            margin-top: 6px;
+        }
+    }
+}

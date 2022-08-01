@@ -1,0 +1,15 @@
+@import '../../../../style-constants.scss';
+@import '../../../../mixins/color-mixin.scss';
+
+
+.info-line {
+    font-family: "DMSerifDisplayRegular"; 
+    font-size: 32px;
+    line-height: 38px;
+
+    @include type-color-mixin;
+
+    &__favorite-name {
+        text-transform: uppercase;
+    }
+}

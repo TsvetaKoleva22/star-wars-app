@@ -1,0 +1,23 @@
+@import '../../style-constants.scss';
+
+.not-found-page {
+    color: $primary-red;
+    font-family: "DMSerifDisplayRegular";
+
+    &__container {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    h1 {
+        font-size: 52px;
+    }
+
+    h2 {
+        font-size: 32px;
+    }
+}

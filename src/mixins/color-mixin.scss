@@ -1,0 +1,33 @@
+$type-colors: (
+    character: $primary-blue,
+    starship: $primary-green,
+    vehicle: $primary-red,
+);
+
+@mixin type-color-mixin {
+    @each $name, $color in $type-colors {
+        &--#{"" + $name} {
+            color: $color; 
+        }
+    }
+}
+
+@mixin selected-color-mixin {
+    &--character-selected {
+        border: 3px solid $primary-blue;
+        box-shadow: 0px 4px 4px rgba(14, 133, 243, 0.12);
+        padding: 29px;
+    }
+
+    &--starship-selected {
+        border: 3px solid $primary-green;
+        box-shadow: 0px 4px 4px rgba(67, 137, 69, 0.12);
+        padding: 29px;
+    }
+
+    &--vehicle-selected {
+        border: 3px solid $primary-red;
+        box-shadow: 0px 4px 4px rgba(245, 44, 141, 0.12);
+        padding: 29px;
+    }
+}

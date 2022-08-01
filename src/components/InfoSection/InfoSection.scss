@@ -1,0 +1,12 @@
+@import '../../style-constants.scss';
+
+.info-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 32px;
+    box-shadow: $standard-box-shadow;
+    border-radius: $standard-border-radius;
+    background-color: $white;
+    margin-bottom: 32px;
+}

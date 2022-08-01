@@ -1,0 +1,16 @@
+@import '../../style-constants.scss';
+@import '../../mixins/breakpoint-mixin.scss';
+
+.container {
+    max-width: $container-desktop-width;
+    padding: 32px 30px;
+    margin: auto;
+
+    @include large-desktop {
+        max-width: $container-large-desktop-width;
+    }
+
+    @include small-mobile {
+        padding: 32px 10px;
+    }
+}
