@@ -52,3 +52,14 @@ export const transformVehicle = (item) => {
         isSelected: false,
     }
 }
+
+export const transformPlanet = (item) => {
+    if (!item) {
+        return {}
+    }
+
+    return {
+        name: item.name,
+        url: item.url,
+    }
+}

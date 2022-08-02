@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { fetchCharacters, fetchStarships, fetchVehicles } from './utils/fetchUtils';
+import { fetchCharacters, fetchStarships, fetchVehicles, fetchPlanets } from './utils/fetchUtils';
 
 const AppContext = createContext(undefined);
 
@@ -45,14 +45,19 @@ export const ContextWrapper = ({ children }) => {
     const charactersQueryData = useQuery(['characters'], fetchCharacters, queryConfig);
     const starshipsQueryData = useQuery(['starships'], fetchStarships, queryConfig);
     const vehiclesQueryData = useQuery(['vehicles'], fetchVehicles, queryConfig);
+    const planetsQueryData = useQuery(['planets'], fetchPlanets, queryConfig);
 
     useEffect(() => {
-        if (charactersQueryData.data) {
+        if (charactersQueryData.data && planetsQueryData.data) {
+            const charactersWithPlanets = charactersQueryData.data.map(character => {
+                const foundHomeworld = planetsQueryData.data.find(homeworld => homeworld.url === character.homeworld_url);
+                return {...character, homeworld: foundHomeworld ? foundHomeworld.name : ''}
+            })
             setResourceStore((prevState) => {
-                return {...prevState, characterResources: charactersQueryData.data}}
+                return {...prevState, characterResources: charactersWithPlanets}}
             )
         }
-    }, [charactersQueryData.data]);
+    }, [charactersQueryData.data, planetsQueryData.data]);
 
     useEffect(() => {
         if (starshipsQueryData.data) {

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { transformCharacter, transformStarship, transformVehicle } from './transformUtils';
+import { transformCharacter, transformStarship, transformVehicle, transformPlanet } from './transformUtils';
 
 const baseApi = 'https://swapi.dev/api/';
 
@@ -25,13 +25,4 @@ const fetchItems = async (resource, transformFunc) => {
 export const fetchCharacters = () => fetchItems('people', transformCharacter);
 export const fetchStarships = () => fetchItems('starships', transformStarship);
 export const fetchVehicles = () => fetchItems('vehicles', transformVehicle);
-
-export const fetchHomeworld = async (homeworldUrl) => {
-    try {
-        const { data } = await axios.get(homeworldUrl);
-
-        return data.name;
-    } catch (error) {
-        console.error(error);
-    }
-}
+export const fetchPlanets = () => fetchItems('planets', transformPlanet);
